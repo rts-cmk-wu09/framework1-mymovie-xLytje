@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+body {
+  margin: 0;
+}
+
+#root {
+  max-width: 768px;
+  padding: 2rem;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+
+  font-family: "Nunito", sans-serif;
+}
+
+h1,
+h2 {
+  font-family: "Nunito", sans-serif;
+}
+
+.flexContainer {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.scroll {
+  overflow: scroll;
+  -ms-overflow-style: none; /*Chrome*/
+  scrollbar-width: none; /*Firefox*/
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.movieCardContainer {
+margin: 0 -2rem;
+}
