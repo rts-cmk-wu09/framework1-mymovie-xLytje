@@ -7,12 +7,12 @@ function App() {
   return (
     <div className="App">
       <header className="gridContainer">
-        <Heading text="MyMovie" size="16px" type="h1"/>
+        <Heading text="MyMovie" size="16px" type="h1" weight="bold"/>
       </header>
       <main>
         <section>
           <div className="flexContainer space-between">
-            <Heading text="Now showing" size="16px" type="h1"/>
+            <Heading text="Now showing" size="16px" type="h2" weight="bold"/>
             <SeeMoreButton />
           </div>
           <div className="flexContainer movieCardContainer">
