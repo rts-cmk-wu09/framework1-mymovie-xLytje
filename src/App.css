@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Mulish:wght@200;300&display=swap");
 
 @import "normalize.css";
 
 #root {
   max-width: 768px;
   padding: 2rem;
-  font-family: "Nunito", sans-serif;
+  font-family: "Mulish", sans-serif;
 }
 
 body,figure,p,h1,h2,h3 {
