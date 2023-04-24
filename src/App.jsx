@@ -1,5 +1,5 @@
 import "./App.css";
-import HeadingOne from "./components/HeadingOne";
+import Heading from "./components/Heading";
 import MovieCard from "./templates/MovieCard";
 import HeadingTwo from "./components/HeadingTwo";
 import SeeMoreButton from "./components/SeeMoreBtn";
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header className="gridContainer">
-        <HeadingOne />
+        <Heading text="MyMovie" size="16px"/>
       </header>
       <main>
         <section>
