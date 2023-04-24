@@ -6,11 +6,8 @@ body {
 
 #root {
   max-width: 768px;
-  padding: 2rem;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
-
   font-family: "Nunito", sans-serif;
 }
 
@@ -25,6 +22,7 @@ h2 {
 
 .space-between {
   justify-content: space-between;
+  align-items: center;
 }
 
 .scroll {
@@ -38,5 +36,12 @@ h2 {
 }
 
 .movieCardContainer {
-margin: 0 -2rem;
+  margin: 0 -2rem;
+  gap: 1rem;
+  padding-left: 2rem;
+}
+
+figure{
+  margin: 0;
+  padding: 0;
 }
