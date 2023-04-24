@@ -2,12 +2,14 @@ import "./App.css";
 import Heading from "./components/Heading";
 import MovieCard from "./templates/MovieCard";
 import SeeMoreButton from "./components/SeeMoreBtn";
+import Switch from "./components/Switch";
 
 function App() {
   return (
     <div className="App">
       <header className="gridContainer">
         <Heading text="MyMovie" size="16px" type="h1"/>
+        <Switch />
       </header>
       <main>
         <section>
