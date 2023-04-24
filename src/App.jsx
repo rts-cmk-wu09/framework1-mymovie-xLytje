@@ -1,19 +1,18 @@
 import "./App.css";
 import Heading from "./components/Heading";
 import MovieCard from "./templates/MovieCard";
-import HeadingTwo from "./components/HeadingTwo";
 import SeeMoreButton from "./components/SeeMoreBtn";
 
 function App() {
   return (
     <div className="App">
       <header className="gridContainer">
-        <Heading text="MyMovie" size="16px"/>
+        <Heading text="MyMovie" size="16px" type="h1"/>
       </header>
       <main>
         <section>
           <div className="flexContainer space-between">
-            <HeadingTwo />
+            <Heading text="Now showing" size="16px" type="h1"/>
             <SeeMoreButton />
           </div>
           <div className="flexContainer movieCardContainer">

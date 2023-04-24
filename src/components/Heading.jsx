@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
-const Heading = ({text, size}) => {
-    const StyledHeading = styled.h1`
-  font-size: ${size};
-  color: #110e47;
-  justify-self: center;
+const Heading = ({text, size, type}) => {
+    // skriver "style(type)" fordi "style.{type}" ikke virker. 
+    // noget med strings? forstår ik helt
+    const StyledHeading = styled(type)`
+    font-size: ${size};
+    color: #110e47;
+    justify-self: center;
 `;
     return <StyledHeading>{text}</StyledHeading>;
 };
