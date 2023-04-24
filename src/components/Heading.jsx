@@ -7,6 +7,7 @@ const Heading = ({text, size, type, weight}) => {
     font-size: ${size};
     font-weight: ${weight};
     color: #110e47;
+    grid-column-start: 2;
     justify-self: center;
 `;
     return <StyledHeading>{text}</StyledHeading>;
