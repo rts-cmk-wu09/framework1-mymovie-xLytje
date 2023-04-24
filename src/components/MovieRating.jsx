@@ -1,18 +1,23 @@
 import styled from "styled-components";
-import {FaStar} from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
-const Skrift = styled.p`
+const StyledFaStar = styled(FaStar)`
+  color: #ffc319;
+`;
+const StyledP = styled.p`
+  color: #9c9c9c;
+  margin-left: 4px;
+`;
+const StyledDiv = styled.div`
   display: flex;
-  align-items: center;
-  gap: 5px;
 `;
 
 const MovieRating = () => {
   return (
-    <div>
-        
-      <Skrift><FaStar /> 9.10/10 IMDb</Skrift>
-    </div>  
+    <StyledDiv>
+      <StyledFaStar />
+      <StyledP>9.1/10 IMDb</StyledP>
+    </StyledDiv>
   );
 };
 

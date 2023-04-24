@@ -1,22 +1,22 @@
 import "./App.css";
-import HeadingTwo from "./components/HeadingTwo";
-import SeeMoreBtn from "./components/SeeMoreBtn";
-import HeadingOne from "./components/headingOne";
+import HeadingOne from "./components/HeadingOne";
 import MovieCard from "./templates/MovieCard";
+import HeadingTwo from "./components/HeadingTwo";
+import SeeMoreButton from "./components/SeeMoreBtn";
 
 function App() {
   return (
     <div className="App">
-      <header>
+      <header className="gridContainer">
         <HeadingOne />
       </header>
       <main>
         <section>
           <div className="flexContainer space-between">
             <HeadingTwo />
-            <SeeMoreBtn />
+            <SeeMoreButton />
           </div>
-          <div className="flexContainer scroll movieCardContainer">
+          <div className="flexContainer movieCardContainer">
             <MovieCard />
             <MovieCard />
             <MovieCard />

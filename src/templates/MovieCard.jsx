@@ -1,19 +1,24 @@
+import styled from "styled-components";
 import Image from "../components/Image";
-import HeadingThree from "../components/HeadingThree";
+import Heading3 from "../components/HeadingThree";
 import MovieRating from "../components/MovieRating";
 
+const StyledArticle = styled.article`
+  height: 283px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
-
-//SFC
 const MovieCard = () => {
   return (
-    <article>
+    <StyledArticle>
       <figure>
-        <Image/>
+        <Image />
       </figure>
-      <HeadingThree />
+      <Heading3 />
       <MovieRating />
-    </article>
+    </StyledArticle>
   );
 };
 

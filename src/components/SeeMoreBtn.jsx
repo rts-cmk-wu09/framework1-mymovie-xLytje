@@ -1,19 +1,18 @@
-
 import styled from "styled-components";
 
 const Button = styled.button`
-  background-color: transparent;
+  width: 61px;
+  height: 21px;
+  background-color: white;
+  color: #aaa9b1;
+  border: solid 1px;
+  border-color: #aaa9b1;
   border-radius: 25px;
-  border: solid 2px black;
   font-size: 10px;
-  letter-spacing: 2px;
-  width: 80px;
-  height: 30px;
 `;
 
-
-const SeeMoreBtn = () => {
+const SeeMoreButton = () => {
   return <Button>See more</Button>;
 };
 
-export default SeeMoreBtn;
+export default SeeMoreButton;
