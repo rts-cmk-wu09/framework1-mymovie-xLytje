@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Titel = styled.h3`
   font-weight: 300;
+  padding: 10px 0 5px;
 `;
 // font-weight: 200;
 
