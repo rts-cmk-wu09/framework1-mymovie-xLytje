@@ -1,5 +1,5 @@
-import { useLottie } from "lottie-react";
-import ErrorDino from "../lottie/error-dino.json";
+import Lottie from "lottie-react";
+import ErrorPlug from "../lottie/error-plug.json";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -20,16 +20,9 @@ const StyledDiv = styled.div`
 `;
 
 const ErrorView = () => {
-    const options = {
-        animationData: ErrorDino,
-        loop: true
-      };
-    
-      const { View } = useLottie(options);
-
       return (
         <>
-        {View}
+        <Lottie animationData={ErrorPlug} loop={true} />
         <StyledDiv>
             <Link to="/" >
                 <BackButton>Back to frontpage</BackButton>    
