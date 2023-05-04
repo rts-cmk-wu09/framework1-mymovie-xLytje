@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import ListView from "./pages/ListView";
 import DetailsView from "./pages/DetailsView";
+import ErrorView from "./pages/ErrorView";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -12,7 +13,7 @@ import {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
+    <Route path="/" element={<App />} errorElement={<ErrorView />}>
       <Route index element={<ListView />} />
       <Route path="/details/:id" element={<DetailsView />} />
     </Route>

@@ -22,7 +22,7 @@ const ListView = () => {
           </div>
           <div className="flexContainer movieCardContainerLayout">
             <Link to="/details"> <MovieCard /> </Link>
-            <Link to="/details"> <MovieCard /> </Link>
+            <Link to="/details/1"> <MovieCard /> </Link>
             <Link to="/details"> <MovieCard /> </Link>
             <Link to="/details"> <MovieCard /> </Link>
           </div>
