@@ -4,6 +4,7 @@ import Heading from "../components/Heading";
 import Switch from "../components/Switch";
 import MovieItem from "../templates/MovieItem";
 import Navigation from "../components/Navigation";
+import { Link } from "react-router-dom";
 
 const ListView = () => {
     return (
@@ -20,10 +21,10 @@ const ListView = () => {
             <Button title="See More" />
           </div>
           <div className="flexContainer movieCardContainerLayout">
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
+            <Link to="/details"> <MovieCard /> </Link>
+            <Link to="/details"> <MovieCard /> </Link>
+            <Link to="/details"> <MovieCard /> </Link>
+            <Link to="/details"> <MovieCard /> </Link>
           </div>
         </section>
         <section className="VerticalMovieListContainer">
