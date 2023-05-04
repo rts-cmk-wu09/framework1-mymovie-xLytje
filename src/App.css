@@ -1,52 +1,86 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Mulish:wght@200;300&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Mulish:wght@100;300;500;700&display=swap");
 @import "normalize.css";
-
 #root {
   max-width: 768px;
-  padding: 2rem;
   font-family: "Mulish", sans-serif;
-}
+  letter-spacing: 0.75px;
 
-body,figure,p,h1,h2,h3 {
+}
+main {
+  padding: 0 2rem;
+}
+body,
+figure,
+figcaption,
+p,
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
   padding: 0;
 }
-
-h1,h2 {
-  font-family: "Nunito", sans-serif;
+h1,
+h2 {
+  font-family: "Merriweather", serif;
+  color: #110e47;
 }
-
-.flexContainer {
-  display: flex;
+h3 {
+  font-weight: 700;
 }
-
-.gridContainer {
-  display: grid;
+h4 {
+  font-weight: 300;
+  color: #9c9c9c;
 }
-
-.space-between {
-  justify-content: space-between;
-  align-items: center;
-}
-
-header {
+.header {
+  position: fixed;
+  width: calc(100vw - 4rem);
+  padding: 0 2rem;
+  background-color: #fff;
   height: 60px;
   grid-template-columns: 1fr 1fr 1fr;
 }
-
-.movieCardContainer {
+.flexContainer {
+  display: flex;
+}
+.gridContainer {
+  display: grid;
+}
+.justify-space-between {
+  justify-content: space-between;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.HorizontalMovieListContainer {
+  padding: 76px 0 0;
+}
+.VerticalMovieListContainer {
+  padding: 0 0 76px;
+}
+.VerticalMovieListTitleLayout {
+  position: sticky;
+  top: 60px;
+  background-color: #fff;
+  padding-bottom: 2rem;
+}
+.movieCardContainerLayout {
   margin: 2rem -2rem;
   gap: 1rem;
-  padding-left: 2rem;
-  padding-right: 1rem;
-  height: 320px;
+  padding: 0 1rem 0 2rem;
   overflow-x: scroll;
-  -ms-overflow-style: none; 
-  scrollbar-width: none;
-
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  /* scroll-behavior: smooth; */
 }
-
-.movieCardContainer::-webkit-scrollbar {
+.movieCardContainerLayout::-webkit-scrollbar {
   display: none;
+}
+.movieListContainerLayout {
+  flex-direction: column;
+  gap: 16px;
+}
+.movieDescriptionContainerLayout {
+  margin-top: 100px;
+  border: solid 1px red;
 }
