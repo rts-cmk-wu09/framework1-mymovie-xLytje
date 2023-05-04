@@ -1,9 +1,9 @@
-import MovieCard from "./templates/MovieCard";
-import Button from "./components/Button";
-import Heading from "./components/Heading";
-import Switch from "./components/Switch";
-import MovieItem from "./templates/MovieItem";
-import Navigation from "./components/Navigation";
+import MovieCard from "../templates/MovieCard";
+import Button from "../components/Button";
+import Heading from "../components/Heading";
+import Switch from "../components/Switch";
+import MovieItem from "../templates/MovieItem";
+import Navigation from "../components/Navigation";
 
 const ListView = () => {
     return (

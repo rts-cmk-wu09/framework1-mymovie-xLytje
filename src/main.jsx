@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import ListView from "./pages/ListView";
+import DetailsView from "./pages/DetailsView";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -10,15 +12,15 @@ import {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />}>
-      <Route path="dashboard" element={<Dashboard />} />
-      <Route path="about" element={<About />} />
+    <Route path="/" element={<App />}>
+      <Route index element={<ListView />} />
+      <Route path="/details" element={<DetailsView />} />
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
