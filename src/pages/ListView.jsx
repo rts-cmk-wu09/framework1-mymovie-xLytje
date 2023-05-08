@@ -4,7 +4,6 @@ import Heading from "../components/Heading";
 import Switch from "../components/Switch";
 import MovieItem from "../templates/MovieItem";
 import Navigation from "../components/Navigation";
-import { Link } from "react-router-dom";
 
 const ListView = () => {
     return (

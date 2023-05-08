@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FaStar } from "react-icons/fa";
 
+
 const StyledFaStar = styled(FaStar)`
   color: #ffc319;
 `;
@@ -12,11 +13,11 @@ const StyledDiv = styled.div`
   display: flex;
 `;
 
-const Rating = () => {
+const Rating = (props) => {
   return (
     <StyledDiv>
       <StyledFaStar />
-      <StyledP>9.1/10 IMDb</StyledP>
+      <StyledP>{props.voteAverage}/10 IMDb</StyledP>
     </StyledDiv>
   );
 };

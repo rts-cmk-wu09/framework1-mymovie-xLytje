@@ -18,13 +18,14 @@ const MovieCardData = useLoaderData();
   return (
     <>
       {MovieCardData.results.map((data) => (
-        <Link to="details/">
+        <Link to={`details/${data.id}`} key={data.id}>
           <StyledArticle>
             <figure>
-              <Image shadow={true} src={coverimage} alt="Cover Image" />
+              <Image shadow={true} width="143" src={`https://image.tmdb.org/t/p/w200${data.poster_path}`} alt="Cover Image" />
             </figure>
-            <Heading title={data.title} size="14" as="h3" />
-            <Rating />
+            <Heading title={data.title.length > 23 ? data.title.substring(0, 23) + "..." : data.title} size="14" as="h3" />
+            {/* split(" ").slice(0, 4).join(" ") */}
+            <Rating voteAverage={data.vote_average}/>
           </StyledArticle>
         </Link>
       ))}
