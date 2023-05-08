@@ -1,4 +1,4 @@
-import MovieCard from "../templates/MovieCard";
+import NowShowing from "../templates/NowShowing";
 import Button from "../components/Button";
 import Heading from "../components/Heading";
 import Switch from "../components/Switch";
@@ -20,11 +20,11 @@ const ListView = () => {
             <Heading title="Now Showing" size="16" as="h2" />
             <Button title="See More" />
           </div>
-          <div className="flexContainer movieCardContainerLayout">
-            <Link to="/details"> <MovieCard /> </Link>
-            <Link to="/details/1"> <MovieCard /> </Link>
-            <Link to="/details"> <MovieCard /> </Link>
-            <Link to="/details"> <MovieCard /> </Link>
+          <div className="flexContainer nowShowingContainerLayout">
+            <Link to="/details"> <NowShowing /> </Link>
+            <Link to="/details/1"> <NowShowing /> </Link>
+            <Link to="/details"> <NowShowing /> </Link>
+            <Link to="/details"> <NowShowing /> </Link>
           </div>
         </section>
         <section className="VerticalMovieListContainer">
