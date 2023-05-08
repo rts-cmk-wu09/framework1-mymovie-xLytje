@@ -3,6 +3,7 @@ import Image from "../components/Image";
 import Rating from "../components/Rating";
 import Heading from "../components/Heading";
 import coverimage from "../assets/moviecover.png";
+import { useLoaderData } from "react-router-dom";
 
 const StyledArticle = styled.article`
   height: 283px;
@@ -12,6 +13,9 @@ const StyledArticle = styled.article`
 `;
 
 const NowShowing = () => {
+const MovieCardData = useLoaderData();
+console.log("MovieCardData" + MovieCardData);
+
   return (
     <StyledArticle>
       <figure>
@@ -22,5 +26,13 @@ const NowShowing = () => {
     </StyledArticle>
   );
 };
+
+export async function loader() {
+  const res = await fetch(
+    "https://api.themoviedb.org/3/movie/550?api_key="
+  );
+  const data = await res.jason();
+  return data;
+}
 
 export default NowShowing;

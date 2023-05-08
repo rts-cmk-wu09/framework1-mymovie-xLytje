@@ -60,7 +60,7 @@ h4 {
   background-color: #fff;
   padding-bottom: 2rem;
 }
-.movieCardContainerLayout {
+.nowShowingContainerLayout {
   margin: 2rem -2rem;
   gap: 1rem;
   padding: 0 1rem 0 2rem;
@@ -69,7 +69,7 @@ h4 {
   scrollbar-width: none; /* Firefox */
   /* scroll-behavior: smooth; */
 }
-.movieCardContainerLayout::-webkit-scrollbar {
+.nowShowingContainerLayout::-webkit-scrollbar {
   display: none;
 }
 .movieListContainerLayout {
