@@ -3,7 +3,7 @@ import Image from "../components/Image";
 import Rating from "../components/Rating";
 import Heading from "../components/Heading";
 import coverimage from "../assets/moviecover.png";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const StyledArticle = styled.article`
   height: 283px;
@@ -16,19 +16,25 @@ const NowShowing = () => {
 const MovieCardData = useLoaderData();
 
   return (
-    <StyledArticle>
-      <figure>
-        <Image shadow={true} src={coverimage} alt="Cover Image" />
-      </figure>
-      <Heading title="Venom Let There Be Carnage" size="14" as="h3" />
-      <Rating />
-    </StyledArticle>
+    <>
+      {MovieCardData.results.map((data) => (
+        <Link to="details/">
+          <StyledArticle>
+            <figure>
+              <Image shadow={true} src={coverimage} alt="Cover Image" />
+            </figure>
+            <Heading title={data.title} size="14" as="h3" />
+            <Rating />
+          </StyledArticle>
+        </Link>
+      ))}
+    </>
   );
 };
 
 export async function loader() {
   const res = await fetch (
-    "https://api.themoviedb.org/3/movie/now_playing/?api_key="
+    "https://api.themoviedb.org/3/movie/now_playing/?api_key=242f42f718ba1802aa9e7f66ddd6c233"
   );
   const data = await res.json();
   return data;

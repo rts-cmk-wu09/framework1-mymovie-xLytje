@@ -4,13 +4,13 @@ import App from "./App";
 import ListView from "./pages/ListView";
 import DetailsView from "./pages/DetailsView";
 import ErrorView from "./pages/ErrorView";
+import { loader as movieCardDataLoader } from "./templates/NowShowing";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
   Route
 } from "react-router-dom";
-import { loader as movieCardDataLoader } from "./templates/NowShowing";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

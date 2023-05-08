@@ -21,10 +21,7 @@ const ListView = () => {
             <Button title="See More" />
           </div>
           <div className="flexContainer nowShowingContainerLayout">
-            <Link to="/details"> <NowShowing /> </Link>
-            <Link to="/details/1"> <NowShowing /> </Link>
-            <Link to="/details"> <NowShowing /> </Link>
-            <Link to="/details"> <NowShowing /> </Link>
+            <NowShowing />
           </div>
         </section>
         <section className="VerticalMovieListContainer">
