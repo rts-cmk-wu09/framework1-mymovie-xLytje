@@ -34,7 +34,7 @@ const MovieCardData = useLoaderData();
 
 export async function loader() {
   const res = await fetch (
-    "https://api.themoviedb.org/3/movie/now_playing/?api_key=242f42f718ba1802aa9e7f66ddd6c233"
+    "https://api.themoviedb.org/3/movie/now_playing/?api_key="
   );
   const data = await res.json();
   return data;
