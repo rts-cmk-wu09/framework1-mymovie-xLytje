@@ -14,7 +14,6 @@ const StyledArticle = styled.article`
 
 const NowShowing = () => {
 const MovieCardData = useLoaderData();
-console.log("MovieCardData" + MovieCardData);
 
   return (
     <StyledArticle>
@@ -28,10 +27,10 @@ console.log("MovieCardData" + MovieCardData);
 };
 
 export async function loader() {
-  const res = await fetch(
-    "https://api.themoviedb.org/3/movie/550?api_key="
+  const res = await fetch (
+    "https://api.themoviedb.org/3/movie/now_playing/?api_key="
   );
-  const data = await res.jason();
+  const data = await res.json();
   return data;
 }
 
