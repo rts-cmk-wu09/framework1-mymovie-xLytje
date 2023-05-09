@@ -17,36 +17,37 @@ const StyledSection = styled.section`
 `;
 const StyledDiv = styled.div`
   display: flex;
-  gap: 8px;
-`;
-const DontShow = styled.div`
-  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 `;
 
 const MovieItem = () => {
-const {popular} = useLoaderData();
-console.log(popular)
-
+  const { popular, genre } = useLoaderData();
   return (
     <>
-    {popular.results.map((data) => (
-      <Link to={`details/${data.id}`} key={data.id}>
-        <StyledArticle>
-        <Image src={`https://image.tmdb.org/t/p/w200${data.poster_path}`} width="85" height="120" />
-        <StyledSection>
-          <Heading title={data.title} size="14" as="h3" />
-          <Rating voteAverage={data.vote_average}/>
-          <StyledDiv>
-            <Label title={/*data.genre_ids[0] > 1 ?*/ data.genre_ids[0]} />
-            <Label title={data.genre_ids[1]} />
-            <Label title={data.genre_ids[2]} />
-          </StyledDiv>
-          <Time />
-        </StyledSection>
-        </StyledArticle>
-      </Link>
-    ))};
+      {popular.results.map((data) => (
+        <Link to={`details/${data.id}`} key={data.id}>
+          <StyledArticle>
+            <Image
+              src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
+              width="85"
+              height="120"
+            />
+            <StyledSection>
+              <Heading title={data.title} size="14" as="h3" />
+              <Rating voteAverage={data.vote_average} />
+              <StyledDiv>
+                {data.genre_ids.map((id) => (
+                  <Label
+                    title={genre.find((genre) => id === genre.id).name}
+                    key={id}
+                  ></Label>
+                ))}
+              </StyledDiv>
+            </StyledSection>
+          </StyledArticle>
+        </Link>
+      ))}
     </>
   );
 };

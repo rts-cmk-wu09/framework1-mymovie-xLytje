@@ -5,7 +5,7 @@ import coverimage from "../assets/moviecover.png";
 import MovieInfo from "../templates/MovieInfo";
 import MovieDescription from "../templates/MovieDescription";
 import MovieCast from "../templates/MovieCast";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const StyledFaArrowLeft = styled(FaArrowLeft)`
   color: #fff;
@@ -63,11 +63,25 @@ const DetailsView = () => {
       </StyledHeader>
       <StyledMain>
         <MovieInfo />
-        <MovieDescription />
+        <MovieDescription>{}</MovieDescription>
         <MovieCast />
       </StyledMain>
     </>
   );
 };
+
+export async function loader() {
+  return Promise.allSettled([
+    axios("https://api.themoviedb.org/3/movie/now_playing/?api_key="),
+    axios("https://api.themoviedb.org/3/genre/movie/list?api_key="),
+  ]).then((values) => {
+    const [nowPlayingData, genreData] = values;
+
+    return {
+      nowPlaying: nowPlayingData.value.data,
+      genre: genreData.value.data.genres,
+    };
+  });
+}
 
 export default DetailsView;

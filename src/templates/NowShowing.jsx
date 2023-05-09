@@ -3,7 +3,6 @@ import Image from "../components/Image";
 import Rating from "../components/Rating";
 import Heading from "../components/Heading";
 import { Link, useLoaderData } from "react-router-dom";
-import axios from "axios";
 
 const StyledArticle = styled.article`
   height: 283px;
@@ -29,16 +28,7 @@ const NowShowing = () => {
                 alt="Cover Image"
               />
             </figure>
-            <Heading
-              title={
-                data.title.length > 24
-                  ? data.title.substring(0, 24) + "..."
-                  : data.title
-              }
-              size="14"
-              as="h3"
-            />
-            {/* split(" ").slice(0, 4).join(" ") */}
+            <Heading title={data.title} size="14" as="h3" />
             <Rating voteAverage={data.vote_average} />
           </StyledArticle>
         </Link>
@@ -46,26 +36,5 @@ const NowShowing = () => {
     </>
   );
 };
-
-export async function loader() {
-  // const nowPlayingData = await (await fetch (
-  //   "https://api.themoviedb.org/3/movie/now_playing/?api_key="
-  // )).json();
-  // const popularData = await (await fetch (
-  //   "https://api.themoviedb.org/3/movie/popular/?api_key="
-  // )).json();
-  // return {nowPlaying: nowPlayingData, popular: popularData};
-
-  return Promise.allSettled([
-    axios("https://api.themoviedb.org/3/movie/now_playing/?api_key="),
-    axios("https://api.themoviedb.org/3/movie/popular/?api_key="),
-  ]).then((values) => {
-    console.log(values);
-    return {
-      nowPlaying: values[0].value.data,
-      popular: values[1].value.data,
-    };
-  });
-}
 
 export default NowShowing;
