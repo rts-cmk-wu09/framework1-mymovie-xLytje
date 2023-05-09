@@ -19,6 +19,10 @@ const StyledDiv = styled.div`
   display: flex;
   gap: 8px;
 `;
+const DontShow = styled.div`
+  display: flex;
+  gap: 8px;
+`;
 
 const MovieItem = () => {
 const {popular} = useLoaderData();
@@ -34,9 +38,9 @@ console.log(popular)
           <Heading title={data.title} size="14" as="h3" />
           <Rating voteAverage={data.vote_average}/>
           <StyledDiv>
+            <Label title={/*data.genre_ids[0] > 1 ?*/ data.genre_ids[0]} />
             <Label title={data.genre_ids[1]} />
-            <Label title="thriller" />
-            <Label title="documentary" />
+            <Label title={data.genre_ids[2]} />
           </StyledDiv>
           <Time />
         </StyledSection>

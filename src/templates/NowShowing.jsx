@@ -3,6 +3,7 @@ import Image from "../components/Image";
 import Rating from "../components/Rating";
 import Heading from "../components/Heading";
 import { Link, useLoaderData } from "react-router-dom";
+import axios from "axios";
 
 const StyledArticle = styled.article`
   height: 283px;
@@ -12,8 +13,8 @@ const StyledArticle = styled.article`
 `;
 
 const NowShowing = () => {
-const {nowPlaying} = useLoaderData();
-console.log(nowPlaying)
+  const { nowPlaying } = useLoaderData();
+  console.log(nowPlaying);
 
   return (
     <>
@@ -21,11 +22,24 @@ console.log(nowPlaying)
         <Link to={`details/${data.id}`} key={data.id}>
           <StyledArticle>
             <figure>
-              <Image shadow={true} width="143" src={`https://image.tmdb.org/t/p/w200${data.poster_path}`} alt="Cover Image" />
+              <Image
+                shadow={true}
+                width="143"
+                src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
+                alt="Cover Image"
+              />
             </figure>
-            <Heading title={data.title.length > 24 ? data.title.substring(0, 24) + "..." : data.title} size="14" as="h3" />
+            <Heading
+              title={
+                data.title.length > 24
+                  ? data.title.substring(0, 24) + "..."
+                  : data.title
+              }
+              size="14"
+              as="h3"
+            />
             {/* split(" ").slice(0, 4).join(" ") */}
-            <Rating voteAverage={data.vote_average}/>
+            <Rating voteAverage={data.vote_average} />
           </StyledArticle>
         </Link>
       ))}
@@ -34,13 +48,24 @@ console.log(nowPlaying)
 };
 
 export async function loader() {
-  const nowPlayingData = await (await fetch (
-    "https://api.themoviedb.org/3/movie/now_playing/?api_key="
-  )).json();
-  const popularData = await (await fetch (
-    "https://api.themoviedb.org/3/movie/popular/?api_key="
-  )).json();
-  return {nowPlaying: nowPlayingData, popular: popularData};
+  // const nowPlayingData = await (await fetch (
+  //   "https://api.themoviedb.org/3/movie/now_playing/?api_key="
+  // )).json();
+  // const popularData = await (await fetch (
+  //   "https://api.themoviedb.org/3/movie/popular/?api_key="
+  // )).json();
+  // return {nowPlaying: nowPlayingData, popular: popularData};
+
+  return Promise.allSettled([
+    axios("https://api.themoviedb.org/3/movie/now_playing/?api_key="),
+    axios("https://api.themoviedb.org/3/movie/popular/?api_key="),
+  ]).then((values) => {
+    console.log(values);
+    return {
+      nowPlaying: values[0].value.data,
+      popular: values[1].value.data,
+    };
+  });
 }
 
 export default NowShowing;
