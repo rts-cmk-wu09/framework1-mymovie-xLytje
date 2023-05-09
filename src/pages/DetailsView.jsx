@@ -1,24 +1,16 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Switch from "../components/Switch";
 import { FaArrowLeft, FaPlay, FaRegBookmark } from "react-icons/fa";
-import coverimage from "../assets/moviecover.png";
-import MovieInfo from "../templates/MovieInfo";
+import Label from "../components/Label";
+import Heading from "../components/Heading";
+import Rating from "../components/Rating";
 import MovieDescription from "../templates/MovieDescription";
 import MovieCast from "../templates/MovieCast";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useResolvedPath } from "react-router-dom";
+import coverimage from "../components/Cover";
 
 const StyledFaArrowLeft = styled(FaArrowLeft)`
   color: #fff;
-`;
-const StyledHeader = styled.header`
-  background-image: url(${coverimage});
-  background-size: cover;
-  background-position: 0 20%;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: 3;
-  height: 200px;
-  background-color: gray;
 `;
 const StyledSpan = styled.span`
   position: relative;
@@ -39,6 +31,16 @@ const StyledSpan = styled.span`
     color: #fff;
   }
 `;
+const StyledHeader = styled.header`
+  background-image: url(${coverimage});
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-position: 0px 20%;
+  padding: 2rem;
+  display: grid;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.3);
+`;
 const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
@@ -48,8 +50,37 @@ const StyledMain = styled.main`
   padding: 2rem;
   margin-top: -10px;
 `;
+const StyledSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+const StyledFaRegBookmark = styled(FaRegBookmark)`
+  align-self: center;
+`;
+const StyledGridSection = styled.section`
+  display: grid;
+  grid-template-columns: 25vw 25vw 25vw;
+`;
+const StyledFlexSection = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+const StyledP = styled.p`
+  margin-top: 5px;
+  font-weight: 500;
+  font-size: 12px;
+`;
 
 const DetailsView = () => {
+  const { popular, genre, nowPlaying } = useLoaderData();
+  const url = useResolvedPath().pathname.slice(9);
+  const either = [popular, nowPlaying];
+  const dataDetail = either[0].results.find(
+    (data) => data.id === parseInt(url)
+  );
+
   return (
     <>
       <StyledHeader>
@@ -62,26 +93,34 @@ const DetailsView = () => {
         <Switch justify="end" align="top" />
       </StyledHeader>
       <StyledMain>
-        <MovieInfo />
-        <MovieDescription>{}</MovieDescription>
+        <StyledSection>
+          <div className="flexContainer justify-space-between">
+            <Heading title={dataDetail.title} size="20" as="h1" />
+            <StyledFaRegBookmark />
+          </div>
+          <Rating voteAverage={dataDetail.vote_average} />
+          <StyledFlexSection>
+            {dataDetail.genre_ids.map((id) => (
+              <Label
+                title={genre.find((genre) => id === genre.id).name}
+                key={id}
+              ></Label>
+            ))}
+          </StyledFlexSection>
+          <StyledGridSection>
+            <Heading title="Length" size="12" as="h4" />
+            <Heading title="Langauge" size="12" as="h4" />
+            <Heading title="Rating" size="12" as="h4" />
+            <StyledP>Length4</StyledP>
+            <StyledP>Length4</StyledP>
+            <StyledP>Length4</StyledP>
+          </StyledGridSection>
+        </StyledSection>
+        <MovieDescription text={dataDetail.overview} />
         <MovieCast />
       </StyledMain>
     </>
   );
 };
-
-export async function loader() {
-  return Promise.allSettled([
-    axios("https://api.themoviedb.org/3/movie/now_playing/?api_key="),
-    axios("https://api.themoviedb.org/3/genre/movie/list?api_key="),
-  ]).then((values) => {
-    const [nowPlayingData, genreData] = values;
-
-    return {
-      nowPlaying: nowPlayingData.value.data,
-      genre: genreData.value.data.genres,
-    };
-  });
-}
 
 export default DetailsView;

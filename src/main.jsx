@@ -5,8 +5,6 @@ import ListView from "./pages/ListView";
 import DetailsView from "./pages/DetailsView";
 import ErrorView from "./pages/ErrorView";
 import { loader as movieCardDataLoader } from "./pages/ListView";
-import { loader as movieDataLoader } from "./pages/DetailsView";
-// import { bloader as movieItemDataLoader } from "./templates/MovieItem";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -20,7 +18,7 @@ const router = createBrowserRouter(
       <Route index loader={movieCardDataLoader} element={<ListView />} />
       <Route
         path="/details/:id"
-        loader={movieDataLoader}
+        loader={movieCardDataLoader}
         element={<DetailsView />}
       />
     </Route>

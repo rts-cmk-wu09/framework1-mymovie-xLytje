@@ -3,7 +3,6 @@ import Heading from "../components/Heading";
 import Rating from "../components/Rating";
 import Image from "../components/Image";
 import Label from "../components/Label";
-import Time from "../components/Time";
 import { Link, useLoaderData } from "react-router-dom";
 
 const StyledArticle = styled.article`
@@ -37,12 +36,14 @@ const MovieItem = () => {
               <Heading title={data.title} size="14" as="h3" />
               <Rating voteAverage={data.vote_average} />
               <StyledDiv>
-                {data.genre_ids.map((id) => (
-                  <Label
-                    title={genre.find((genre) => id === genre.id).name}
-                    key={id}
-                  ></Label>
-                ))}
+                {data.genre_ids
+                  .map((id) => (
+                    <Label
+                      title={genre.find((genre) => id === genre.id).name}
+                      key={id}
+                    ></Label>
+                  ))
+                  .splice(0, 4)}
               </StyledDiv>
             </StyledSection>
           </StyledArticle>

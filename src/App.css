@@ -31,7 +31,8 @@ h2 {
 h3 {
   font-weight: 700;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow: clip;
+  overflow-clip-margin: 1px;
   white-space: wrap;
   display: -webkit-box;
   -webkit-line-clamp: 2;

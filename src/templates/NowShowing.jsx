@@ -13,7 +13,7 @@ const StyledArticle = styled.article`
 
 const NowShowing = () => {
   const { nowPlaying } = useLoaderData();
-  console.log(nowPlaying);
+  // console.log(nowPlaying);
 
   return (
     <>
