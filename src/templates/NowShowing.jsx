@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Image from "../components/Image";
 import Rating from "../components/Rating";
 import Heading from "../components/Heading";
-import coverimage from "../assets/moviecover.png";
 import { Link, useLoaderData } from "react-router-dom";
 
 const StyledArticle = styled.article`
@@ -13,17 +12,18 @@ const StyledArticle = styled.article`
 `;
 
 const NowShowing = () => {
-const MovieCardData = useLoaderData();
+const {nowPlaying} = useLoaderData();
+console.log(nowPlaying)
 
   return (
     <>
-      {MovieCardData.results.map((data) => (
+      {nowPlaying.results.map((data) => (
         <Link to={`details/${data.id}`} key={data.id}>
           <StyledArticle>
             <figure>
               <Image shadow={true} width="143" src={`https://image.tmdb.org/t/p/w200${data.poster_path}`} alt="Cover Image" />
             </figure>
-            <Heading title={data.title.length > 23 ? data.title.substring(0, 23) + "..." : data.title} size="14" as="h3" />
+            <Heading title={data.title.length > 24 ? data.title.substring(0, 24) + "..." : data.title} size="14" as="h3" />
             {/* split(" ").slice(0, 4).join(" ") */}
             <Rating voteAverage={data.vote_average}/>
           </StyledArticle>
@@ -34,11 +34,13 @@ const MovieCardData = useLoaderData();
 };
 
 export async function loader() {
-  const res = await fetch (
+  const nowPlayingData = await (await fetch (
     "https://api.themoviedb.org/3/movie/now_playing/?api_key="
-  );
-  const data = await res.json();
-  return data;
+  )).json();
+  const popularData = await (await fetch (
+    "https://api.themoviedb.org/3/movie/popular/?api_key="
+  )).json();
+  return {nowPlaying: nowPlayingData, popular: popularData};
 }
 
 export default NowShowing;

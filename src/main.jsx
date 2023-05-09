@@ -5,6 +5,7 @@ import ListView from "./pages/ListView";
 import DetailsView from "./pages/DetailsView";
 import ErrorView from "./pages/ErrorView";
 import { loader as movieCardDataLoader } from "./templates/NowShowing";
+// import { bloader as movieItemDataLoader } from "./templates/MovieItem";
 import {
   createBrowserRouter,
   createRoutesFromElements,

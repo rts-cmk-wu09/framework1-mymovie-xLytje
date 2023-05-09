@@ -30,13 +30,6 @@ const ListView = () => {
           </div>
           <div className="flexContainer movieListContainerLayout">
             <MovieItem />
-            <MovieItem />
-            <MovieItem />
-            <MovieItem />
-            <MovieItem />
-            <MovieItem />
-            <MovieItem />
-            <MovieItem />
           </div>
         </section>
       </main>
