@@ -53,9 +53,21 @@ export async function loader() {
   // return { nowPlaying: nowPlayingData, popular: popularData };
 
   return Promise.allSettled([
-    axios("https://api.themoviedb.org/3/movie/now_playing/?api_key="),
-    axios("https://api.themoviedb.org/3/movie/popular/?api_key="),
-    axios("https://api.themoviedb.org/3/genre/movie/list?api_key="),
+    axios(
+      `https://api.themoviedb.org/3/movie/now_playing/?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }`
+    ),
+    axios(
+      `https://api.themoviedb.org/3/movie/popular/?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }`
+    ),
+    axios(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }`
+    ),
   ]).then((values) => {
     // console.log(values);
     // return {
@@ -63,6 +75,8 @@ export async function loader() {
     //   popular: values[1].value.data,
     // };
     const [nowPlayingData, popularData, genreData] = values;
+
+    console.log(values);
 
     return {
       nowPlaying: nowPlayingData.value.data,

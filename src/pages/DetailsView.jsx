@@ -77,7 +77,7 @@ const DetailsView = () => {
   const { popular, genre, nowPlaying } = useLoaderData();
   const url = useResolvedPath().pathname.slice(9);
   const either = [popular, nowPlaying];
-  const dataDetail = either[0].results.find(
+  const dataDetail = either[1].results.find(
     (data) => data.id === parseInt(url)
   );
 
@@ -122,5 +122,13 @@ const DetailsView = () => {
     </>
   );
 };
+
+// export const detailsViewData = async ({ params }) => {
+//   return await axios(
+//     `https://api.themoviedb.org/3/movie/${params.id}?api_key=$&append_to_response=videos`
+//   ).then((details) => {
+//     return details.data;
+//   });
+// };
 
 export default DetailsView;
