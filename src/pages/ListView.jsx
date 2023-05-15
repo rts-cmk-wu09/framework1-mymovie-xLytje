@@ -2,7 +2,7 @@ import NowShowing from "../templates/NowShowing";
 import Button from "../components/Button";
 import Heading from "../components/Heading";
 import Switch from "../components/Switch";
-import MovieItem from "../templates/MovieItem";
+import Popular from "../templates/Popular";
 import Navigation from "../components/Navigation";
 import axios from "axios";
 
@@ -19,7 +19,7 @@ const ListView = () => {
             <Heading title="Now Showing" size="16" as="h2" />
             <Button title="See More" />
           </div>
-          <div className="flexContainer nowShowingContainerLayout">
+          <div className="flexContainer movieCardContainerLayout">
             <NowShowing />
           </div>
         </section>
@@ -29,7 +29,7 @@ const ListView = () => {
             <Button title="See More" />
           </div>
           <div className="flexContainer movieListContainerLayout">
-            <MovieItem />
+            <Popular />
           </div>
         </section>
       </main>
@@ -40,19 +40,8 @@ const ListView = () => {
   );
 };
 
-export async function loader() {
-  // const nowPlayingResponse = await fetch(
-  //   "https://api.themoviedb.org/3/movie/now_playing/?api_key="
-  // );
-  // const popularResponse = await fetch(
-  //   "https://api.themoviedb.org/3/movie/popular/?api_key="
-  // );
-  // const popularData = await popularResponse.json();
-  // const nowPlayingData = await nowPlayingResponse.json();
-
-  // return { nowPlaying: nowPlayingData, popular: popularData };
-
-  return Promise.allSettled([
+export const ListViewData = async () => {
+  return await Promise.allSettled([
     axios(
       `https://api.themoviedb.org/3/movie/now_playing/?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
@@ -63,27 +52,12 @@ export async function loader() {
         import.meta.env.VITE_TMDB_API_KEY
       }`
     ),
-    axios(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }`
-    ),
-  ]).then((values) => {
-    // console.log(values);
-    // return {
-    //   nowPlaying: values[0].value.data,
-    //   popular: values[1].value.data,
-    // };
-    const [nowPlayingData, popularData, genreData] = values;
-
-    console.log(values);
-
+  ]).then((data) => {
     return {
-      nowPlaying: nowPlayingData.value.data,
-      popular: popularData.value.data,
-      genre: genreData.value.data.genres,
+      nowShowing: data[0].value.data.results,
+      popular: data[1].value.data.results,
     };
   });
-}
+};
 
 export default ListView;

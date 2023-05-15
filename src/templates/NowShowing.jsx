@@ -12,23 +12,29 @@ const StyledArticle = styled.article`
 `;
 
 const NowShowing = () => {
-  const { nowPlaying } = useLoaderData();
-  // console.log(nowPlaying);
-
+  const MovieData = useLoaderData();
   return (
     <>
-      {nowPlaying.results.map((data) => (
+      {MovieData.nowShowing.map((data) => (
         <Link to={`details/${data.id}`} key={data.id}>
           <StyledArticle>
             <figure>
               <Image
-                shadow={true}
                 width="143"
-                src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
+                shadow={true}
+                src={`https://image.tmdb.org/t/p/w200/${data.poster_path}`}
                 alt="Cover Image"
               />
             </figure>
-            <Heading title={data.title} size="14" as="h3" />
+            <Heading
+              title={
+                data.title.length > 25
+                  ? data.title.split(" ").slice(0, 3).join(" ") + "..."
+                  : data.title
+              }
+              size="14"
+              as="h3"
+            />
             <Rating voteAverage={data.vote_average} />
           </StyledArticle>
         </Link>

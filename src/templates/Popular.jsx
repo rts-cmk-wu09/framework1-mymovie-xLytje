@@ -3,6 +3,7 @@ import Heading from "../components/Heading";
 import Rating from "../components/Rating";
 import Image from "../components/Image";
 import Label from "../components/Label";
+import Release from "../components/Release";
 import { Link, useLoaderData } from "react-router-dom";
 
 const StyledArticle = styled.article`
@@ -16,19 +17,19 @@ const StyledSection = styled.section`
 `;
 const StyledDiv = styled.div`
   display: flex;
-  flex-wrap: wrap;
   gap: 8px;
 `;
 
-const MovieItem = () => {
-  const { popular, genre } = useLoaderData();
+const Popular = () => {
+  const MovieData = useLoaderData();
+
   return (
     <>
-      {popular.results.map((data) => (
+      {MovieData.popular.map((data) => (
         <Link to={`details/${data.id}`} key={data.id}>
           <StyledArticle>
             <Image
-              src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w200/${data.poster_path}`}
               width="85"
               height="120"
             />
@@ -36,15 +37,11 @@ const MovieItem = () => {
               <Heading title={data.title} size="14" as="h3" />
               <Rating voteAverage={data.vote_average} />
               <StyledDiv>
-                {data.genre_ids
-                  .map((id) => (
-                    <Label
-                      title={genre.find((genre) => id === genre.id).name}
-                      key={id}
-                    ></Label>
-                  ))
-                  .splice(0, 4)}
+                <Label title="horror" />
+                <Label title="thriller" />
+                <Label title="documentary" />
               </StyledDiv>
+              <Release date={data.release_date} />
             </StyledSection>
           </StyledArticle>
         </Link>
@@ -53,12 +50,4 @@ const MovieItem = () => {
   );
 };
 
-// export async function loader() {
-//   const res = await fetch (
-//     "https://api.themoviedb.org/3/movie/popular/?api_key="
-//   );
-//   const data = await res.json();
-//   return data;
-// }
-
-export default MovieItem;
+export default Popular;

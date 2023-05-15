@@ -5,12 +5,9 @@
   font-family: "Mulish", sans-serif;
   letter-spacing: 0.75px;
 }
-main {
-  padding: 0 2rem;
-}
 a {
+  color: #000;
   text-decoration: none;
-  color: inherit;
 }
 body,
 figure,
@@ -30,17 +27,14 @@ h2 {
 }
 h3 {
   font-weight: 700;
-  text-overflow: ellipsis;
-  overflow: clip;
-  overflow-clip-margin: 1px;
-  white-space: wrap;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
 }
 h4 {
   font-weight: 300;
   color: #9c9c9c;
+}
+
+main {
+  padding: 0 2rem;
 }
 .header {
   position: fixed;
@@ -74,23 +68,18 @@ h4 {
   background-color: #fff;
   padding-bottom: 2rem;
 }
-.nowShowingContainerLayout {
+.movieCardContainerLayout {
   margin: 2rem -2rem;
   gap: 1rem;
   padding: 0 1rem 0 2rem;
   overflow-x: scroll;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
-  /* scroll-behavior: smooth; */
 }
-.nowShowingContainerLayout::-webkit-scrollbar {
+.movieCardContainerLayout::-webkit-scrollbar {
   display: none;
 }
 .movieListContainerLayout {
   flex-direction: column;
   gap: 16px;
-}
-.movieDescriptionContainerLayout {
-  margin-top: 100px;
-  border: solid 1px red;
 }

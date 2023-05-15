@@ -1,35 +1,33 @@
 import Lottie from "lottie-react";
-import ErrorPlug from "../lottie/error-plug.json";
-import { Link } from "react-router-dom";
+import errorAnimation from "../assets/lottiefiles/erroranimation.json";
 import styled from "styled-components";
-
-const BackButton = styled.button`
-  background-color: white;
-  color: black;
-  border: solid 1px;
-  border-color: black;
-  border-radius: 2500px;
-  padding: 5px 10px;
-  font-size: 16px;
-`;
+import Button from "../components/Button";
+import Heading from "../components/Heading";
+import { Link } from "react-router-dom";
 
 const StyledDiv = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20vw;
+  height: 100vh;
+`;
+const StyledLottie = styled(Lottie)`
+  width: 75vw;
 `;
 
 const ErrorView = () => {
-      return (
-        <>
-        <Lottie animationData={ErrorPlug} loop={true} />
-        <StyledDiv>
-            <Link to="/" >
-                <BackButton>Back to frontpage</BackButton>    
-            </Link>  
-        </StyledDiv>
-        </>
-      );
-}
- 
+  return (
+    <StyledDiv>
+      <Heading title="Ohh no..." size="16" as="h1" />
+      <StyledLottie animationData={errorAnimation} loop={false} />
+      <Link to="/">
+        <Button title="Take me home" />
+      </Link>
+    </StyledDiv>
+  );
+};
+
 export default ErrorView;

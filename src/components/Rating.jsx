@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { FaStar } from "react-icons/fa";
 
-
 const StyledFaStar = styled(FaStar)`
   color: #ffc319;
 `;
