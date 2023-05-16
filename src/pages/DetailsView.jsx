@@ -44,13 +44,14 @@ const StyledMain = styled.main`
 const DetailsView = () => {
   const DetailData = useLoaderData();
   console.log("DetailsData: ", DetailData);
+  console.log("DetailsData: ", DetailData);
   return (
     <>
       <StyledHeader>
         <StyledIframe
           width="100%"
           height="100%"
-          src={`https://www.youtube.com/embed/${DetailData.details.videos.results[0].key}`}
+          src={`https://www.youtube-nocookie.com/embed/${DetailData.details.videos.results[0].key}?&enablejsapi=1`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -81,6 +82,7 @@ export const DetailsViewData = async ({ params }) => {
       }`
     ),
   ]).then((data) => {
+    console.log(data);
     return {
       details: data[0].value.data,
       cast: data[1].value.data,

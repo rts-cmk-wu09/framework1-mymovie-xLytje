@@ -17,6 +17,7 @@ const StyledSection = styled.section`
 `;
 const StyledDiv = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 `;
 
@@ -37,9 +38,16 @@ const Popular = () => {
               <Heading title={data.title} size="14" as="h3" />
               <Rating voteAverage={data.vote_average} />
               <StyledDiv>
-                <Label title="horror" />
-                <Label title="thriller" />
-                <Label title="documentary" />
+                {data.genre_ids
+                  .map((id) => (
+                    <Label
+                      title={
+                        MovieData.genre.find((genre) => id === genre.id).name
+                      }
+                      key={id}
+                    ></Label>
+                  ))
+                  .splice(0, 4)}
               </StyledDiv>
               <Release date={data.release_date} />
             </StyledSection>

@@ -52,12 +52,17 @@ export const ListViewData = async () => {
         import.meta.env.VITE_TMDB_API_KEY
       }`
     ),
+    axios(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }`
+    ),
   ]).then((data) => {
     return {
       nowShowing: data[0].value.data.results,
       popular: data[1].value.data.results,
+      genre: data[2].value.data.genres,
     };
   });
 };
-
 export default ListView;

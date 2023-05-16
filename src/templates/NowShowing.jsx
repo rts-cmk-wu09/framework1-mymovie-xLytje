@@ -26,15 +26,7 @@ const NowShowing = () => {
                 alt="Cover Image"
               />
             </figure>
-            <Heading
-              title={
-                data.title.length > 25
-                  ? data.title.split(" ").slice(0, 3).join(" ") + "..."
-                  : data.title
-              }
-              size="14"
-              as="h3"
-            />
+            <Heading title={data.title} size="14" as="h3" />
             <Rating voteAverage={data.vote_average} />
           </StyledArticle>
         </Link>
