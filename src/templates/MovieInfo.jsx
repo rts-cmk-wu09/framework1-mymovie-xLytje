@@ -3,15 +3,12 @@ import { FaRegBookmark } from "react-icons/fa";
 import Heading from "../components/Heading";
 import Rating from "../components/Rating";
 import Label from "../components/Label";
+import Bookmark from "../components/Bookmark";
 
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   gap: 12px;
-`;
-const StyledFaRegBookmark = styled(FaRegBookmark)`
-  align-self: top;
-  padding-left: 25px;
 `;
 const StyledGridSection = styled.section`
   display: grid;
@@ -19,6 +16,8 @@ const StyledGridSection = styled.section`
 `;
 const StyledFlexSection = styled.section`
   display: flex;
+  flex-wrap: wrap;
+
   gap: 8px;
 `;
 const StyledP = styled.p`
@@ -26,19 +25,18 @@ const StyledP = styled.p`
   font-weight: 500;
   font-size: 12px;
 `;
-
 const MovieInfo = ({ data }) => {
   return (
     <StyledSection>
       <div className="flexContainer justify-space-between">
         <Heading title={data.title} size="20" as="h1" />
-        <StyledFaRegBookmark />
+        <Bookmark />
       </div>
       <Rating voteAverage={data.vote_average} />
       <StyledFlexSection>
-        <Label title="action" />
-        <Label title="action" />
-        <Label title="action" />
+        {data.genres.map((id) => (
+          <Label title={id.name} key={id.name}></Label>
+        ))}
       </StyledFlexSection>
       <StyledGridSection>
         <Heading title="Length" size="12" as="h4" />
