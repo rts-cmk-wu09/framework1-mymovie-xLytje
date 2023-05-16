@@ -12,13 +12,15 @@ const StyledHeader = styled.header`
   grid-template-columns: 2;
   height: 232px;
 `;
-const StyledFaArrowLeft = styled(FaArrowLeft)`
+const StyledLink = styled(Link)`
   position: relative; /* fix z position on safari mobile */
   color: #fff;
   grid-column-start: 1;
   grid-row-start: 1;
-  margin-top: 2rem;
-  margin-left: 2rem;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  height: 1em;
+  width: 1em;
 `;
 const StyledIframe = styled.iframe`
   grid-column-start: 1;
@@ -57,7 +59,9 @@ const DetailsView = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></StyledIframe>
-        <StyledFaArrowLeft />
+        <StyledLink to={"/"}>
+          <FaArrowLeft />
+        </StyledLink>
         <StyledSwitch justify="end" align="top" />
       </StyledHeader>
       <StyledMain>

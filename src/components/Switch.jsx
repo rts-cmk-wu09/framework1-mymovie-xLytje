@@ -13,6 +13,11 @@ const Switch = (props) => {
   let [checked, setChecked] = useState(false);
   const handleChange = () => {
     setChecked(!checked);
+    if (!checked) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   };
   return (
     <StyledSwitch
