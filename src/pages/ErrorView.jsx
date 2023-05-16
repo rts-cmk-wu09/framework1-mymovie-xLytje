@@ -15,14 +15,14 @@ const StyledDiv = styled.div`
   height: 100vh;
 `;
 const StyledLottie = styled(Lottie)`
-  width: 75vw;
+  width: 100vw;
 `;
 
 const ErrorView = () => {
   return (
     <StyledDiv>
       <Heading title="Ohh no..." size="16" as="h1" />
-      <StyledLottie animationData={errorAnimation} loop={false} />
+      <StyledLottie animationData={errorAnimation} loop={true} />
       <Link to="/">
         <Button title="Take me home" />
       </Link>
