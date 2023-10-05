@@ -10,7 +10,7 @@
 //   );
 // }
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -28,31 +28,38 @@ const StyledButton = styled.button`
 
 export default function Bookmark() {
   const [marked, setMarked] = useState(false);
+  const [render, setRender] = useState(false);
   const { id } = useParams();
-  function handleClick() {
-    setMarked(!marked);
-    const options = {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNDJmNDJmNzE4YmExODAyYWE5ZTdmNjZkZGQ2YzIzMyIsInN1YiI6IjY0NTg5YWI2NmFhOGUwMDE3MzgwMjEzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eahETNYDOtdt2ByOGwFWwQkJ0ungEL-OD5Y5-7oHe9c",
-      },
-      body: JSON.stringify({
-        media_type: "movie",
-        media_id: id,
-        favorite: !marked,
-      }),
-    };
+  useEffect(() => {
+    if (render) {
+      const options = {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          "content-type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNDJmNDJmNzE4YmExODAyYWE5ZTdmNjZkZGQ2YzIzMyIsInN1YiI6IjY0NTg5YWI2NmFhOGUwMDE3MzgwMjEzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eahETNYDOtdt2ByOGwFWwQkJ0ungEL-OD5Y5-7oHe9c",
+        },
+        body: JSON.stringify({
+          media_type: "movie",
+          media_id: id,
+          favorite: marked,
+        }),
+      };
 
-    fetch("https://api.themoviedb.org/3/account/19377414/favorite", options)
-      .then((res) => res.json())
-      .then((json) => console.log(json))
-      .catch((err) => console.error("error:" + err));
-  }
+      fetch("https://api.themoviedb.org/3/account/19377414/favorite", options)
+        .then((res) => res.json())
+        .then((json) => console.log(json))
+        .catch((err) => console.error("error:" + err));
+    }
+    setRender(true);
+  }, [marked]);
   return (
-    <StyledButton onClick={handleClick}>
+    <StyledButton
+      onClick={() => {
+        setMarked(!marked);
+      }}
+    >
       {marked ? (
         <FaBookmark color="#ffc319" size={16} />
       ) : (
