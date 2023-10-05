@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Heading from "../components/Heading";
-import Button from "../components/Button";
 import Actor from "../components/Actor";
+import Button from "../components/Button";
+import Heading from "../components/Heading";
 
 const NewLine = styled.div`
   flex-basis: 100%;
@@ -9,7 +9,7 @@ const NewLine = styled.div`
 `;
 
 const MovieCast = ({ data }) => {
-  console.log("Cast ", data);
+  // console.log("Cast ", data);
   return (
     <section>
       <div className="flexContainer justify-space-between wrap">

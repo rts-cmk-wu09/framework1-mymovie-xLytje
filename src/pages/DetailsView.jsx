@@ -52,8 +52,8 @@ const StyledMain = styled.main`
 
 const DetailsView = () => {
   const DetailData = useLoaderData();
-  console.log("DetailsData: ", DetailData);
-  console.log("DetailsData: ", DetailData);
+  // console.log("DetailsData: ", DetailData);
+  // console.log("DetailsData: ", DetailData);
   return (
     <>
       <StyledHeader>
@@ -93,7 +93,7 @@ export const DetailsViewData = async ({ params }) => {
       }`
     ),
   ]).then((data) => {
-    console.log(data);
+    // console.log(data);
     return {
       details: data[0].value.data,
       cast: data[1].value.data,
