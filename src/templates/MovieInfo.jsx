@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { FaRegBookmark } from "react-icons/fa";
-import Heading from "../components/Heading";
-import Rating from "../components/Rating";
-import Label from "../components/Label";
 import Bookmark from "../components/Bookmark";
+import Heading from "../components/Heading";
+import Label from "../components/Label";
+import Rating from "../components/Rating";
 
 const StyledSection = styled.section`
   display: flex;
@@ -38,7 +37,7 @@ const MovieInfo = ({ data }) => {
           <Label title={id.name} key={id.name}></Label>
         ))}
       </StyledFlexSection>
-      <StyledGridSection>
+      <StyledGridSection className="dark:text-white">
         <Heading title="Length" size="12" as="h4" />
         <Heading title="Langauge" size="12" as="h4" />
         <Heading title="Vote counts" size="12" as="h4" />

@@ -20,7 +20,9 @@ const Actor = ({ data }) => {
         width="75"
         height="75"
       />
-      <StyledFigCaption>{data.name}</StyledFigCaption>
+      <StyledFigCaption className="dark:text-white">
+        {data.name}
+      </StyledFigCaption>
     </StyledFigure>
   );
 };

@@ -11,7 +11,7 @@
 // }
 
 import { useState } from "react";
-import { FaRegBookmark, FaBookmark } from "react-icons/fa";
+import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -37,7 +37,7 @@ export default function Bookmark() {
       {marked ? (
         <FaBookmark color="#ffc319" size={16} />
       ) : (
-        <FaRegBookmark color="#000000" size={16} />
+        <FaRegBookmark color="#9c9c9c" size={16} />
       )}
     </StyledButton>
   );

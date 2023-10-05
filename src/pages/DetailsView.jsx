@@ -1,11 +1,11 @@
-import styled, { css } from "styled-components";
-import Switch from "../components/Switch";
-import { FaArrowLeft, FaPlay } from "react-icons/fa";
-import MovieInfo from "../templates/MovieInfo";
-import MovieDescription from "../templates/MovieDescription";
-import MovieCast from "../templates/MovieCast";
-import { Link, useLoaderData } from "react-router-dom";
 import axios from "axios";
+import { FaArrowLeft } from "react-icons/fa";
+import { Link, useLoaderData } from "react-router-dom";
+import styled from "styled-components";
+import Switch from "../components/Switch";
+import MovieCast from "../templates/MovieCast";
+import MovieDescription from "../templates/MovieDescription";
+import MovieInfo from "../templates/MovieInfo";
 
 const StyledHeader = styled.header`
   display: grid;
@@ -27,9 +27,16 @@ const StyledIframe = styled.iframe`
   grid-column-end: 3;
   grid-row-start: 1;
 `;
+const BackArrow = styled(FaArrowLeft)`
+  stroke: black;
+  stroke-width: 20;
+  stroke-linecap: round;
+  font-size: 1.5rem;
+  margin: -5px 0 0 -5px;
+`;
 const StyledSwitch = styled(Switch)`
   grid-column-start: 2;
-  margin-top: 2rem;
+  margin-top: 1.2rem;
   margin-right: 2rem;
 `;
 const StyledMain = styled.main`
@@ -60,11 +67,11 @@ const DetailsView = () => {
           allowFullScreen
         ></StyledIframe>
         <StyledLink to={"/"}>
-          <FaArrowLeft />
+          <BackArrow />
         </StyledLink>
         <StyledSwitch justify="end" align="top" />
       </StyledHeader>
-      <StyledMain>
+      <StyledMain className="dark:bg-black">
         <MovieInfo data={DetailData.details} />
         <MovieDescription data={DetailData.details} />
         <MovieCast data={DetailData.cast} />

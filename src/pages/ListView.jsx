@@ -1,15 +1,15 @@
-import NowShowing from "../templates/NowShowing";
+import axios from "axios";
 import Button from "../components/Button";
 import Heading from "../components/Heading";
-import Switch from "../components/Switch";
-import Popular from "../templates/Popular";
 import Navigation from "../components/Navigation";
-import axios from "axios";
+import Switch from "../components/Switch";
+import NowShowing from "../templates/NowShowing";
+import Popular from "../templates/Popular";
 
 const ListView = () => {
   return (
     <>
-      <header className="gridContainer header">
+      <header className="gridContainer header dark:bg-black">
         <Switch justify="end" align="center" />
         <Heading title="MyMovies" size="16" as="h1" />
       </header>
@@ -24,7 +24,7 @@ const ListView = () => {
           </div>
         </section>
         <section className="VerticalMovieListContainer">
-          <div className="flexContainer justify-space-between VerticalMovieListTitleLayout">
+          <div className="flexContainer justify-space-between VerticalMovieListTitleLayout dark:bg-black">
             <Heading title="Popular" size="16" as="h2" />
             <Button title="See More" />
           </div>
