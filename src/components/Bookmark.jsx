@@ -1,19 +1,8 @@
-// import { useState } from "react";
-
-// export function ColorChange() {
-//   const [color, setColor] = useState("black");
-
-//   return (
-//     <>
-//       <StyledFaRegBookmark onClick={() => setColor("#ffc319")} />
-//     </>
-//   );
-// }
-
 import { useEffect, useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useFavorite } from "../hooks/useFavorites";
 
 const StyledButton = styled.button`
   border: none;
@@ -27,9 +16,14 @@ const StyledButton = styled.button`
 `;
 
 export default function Bookmark() {
-  const [marked, setMarked] = useState(false);
-  const [render, setRender] = useState(false);
   const { id } = useParams();
+  const favorite = useFavorite(parseInt(id));
+  const [marked, setMarked] = useState(undefined);
+
+  useEffect(() => {
+    favorite && setMarked(favorite);
+  }, [favorite]);
+  const [render, setRender] = useState(false);
   useEffect(() => {
     if (render) {
       const options = {
@@ -37,8 +31,7 @@ export default function Bookmark() {
         headers: {
           accept: "application/json",
           "content-type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNDJmNDJmNzE4YmExODAyYWE5ZTdmNjZkZGQ2YzIzMyIsInN1YiI6IjY0NTg5YWI2NmFhOGUwMDE3MzgwMjEzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eahETNYDOtdt2ByOGwFWwQkJ0ungEL-OD5Y5-7oHe9c",
+          Authorization: "Bearer " + import.meta.env.VITE_TMDB_API_TOKEN,
         },
         body: JSON.stringify({
           media_type: "movie",
