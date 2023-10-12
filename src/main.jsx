@@ -21,7 +21,11 @@ const router = createBrowserRouter(
         loader={DetailsViewData}
         element={<DetailsView />}
       />
-      <Route path="/favorite" element={<FavoriteView />} />
+      <Route
+        path="/favorite"
+        loader={ListViewData}
+        element={<FavoriteView />}
+      />
     </Route>
   )
 );

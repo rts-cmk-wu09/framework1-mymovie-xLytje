@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 import styled from "styled-components";
 import Heading from "../components/Heading";
 import Image from "../components/Image";
@@ -18,10 +19,9 @@ const StyledSection = styled.section`
 `;
 const StyledDiv = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 `;
-
-import { useEffect, useState } from "react";
 
 const Favorite = () => {
   const [movies, setMovies] = useState([]);
@@ -42,7 +42,7 @@ const Favorite = () => {
       .then((json) => setMovies(json.results))
       .catch((err) => console.error("error:" + err));
   }, []);
-
+  const MovieData = useLoaderData();
   return (
     <section className="HorizontalMovieListContainer">
       {movies.map((movie) => (
@@ -57,9 +57,16 @@ const Favorite = () => {
               <Heading title={movie.title} size="14" as="h3" />
               <Rating voteAverage={movie.vote_average} />
               <StyledDiv>
-                <Label title="horror" />
-                <Label title="thriller" />
-                <Label title="documentary" />
+                {movie.genre_ids
+                  .map((id) => (
+                    <Label
+                      title={
+                        MovieData.genre.find((genre) => id === genre.id).name
+                      }
+                      key={id}
+                    ></Label>
+                  ))
+                  .splice(0, 4)}
               </StyledDiv>
               <Release date={movie.release_date} />
             </StyledSection>
