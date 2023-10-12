@@ -2,6 +2,7 @@ import axios from "axios";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 import styled from "styled-components";
+import Navigation from "../components/Navigation";
 import Switch from "../components/Switch";
 import MovieCast from "../templates/MovieCast";
 import MovieDescription from "../templates/MovieDescription";
@@ -76,6 +77,9 @@ const DetailsView = () => {
         <MovieDescription data={DetailData.details} />
         <MovieCast data={DetailData.cast} />
       </StyledMain>
+      <footer>
+        <Navigation />
+      </footer>
     </>
   );
 };
