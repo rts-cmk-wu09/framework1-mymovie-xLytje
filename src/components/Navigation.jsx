@@ -1,5 +1,5 @@
 import { FaBookmark, FaHome, FaUserAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
@@ -31,15 +31,15 @@ const StyledUser = styled(FaUserAlt)`
 const Navigation = () => {
   return (
     <StyledNav className="dark:bg-black dark:shadow-3xl">
-      <Link to={`/`}>
+      <NavLink to={`/`}>
         <StyledHome />
-      </Link>
-      <Link to={`/favorite`}>
+      </NavLink>
+      <NavLink to={`/favorite`}>
         <StyledBookmark />
-      </Link>
-      <Link to={`/`}>
+      </NavLink>
+      <NavLink to={`/user`}>
         <StyledUser />
-      </Link>
+      </NavLink>
     </StyledNav>
   );
 };

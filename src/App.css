@@ -49,6 +49,12 @@ h4 {
 main {
   padding: 0 2rem;
 }
+a.active > svg {
+  color: black;
+}
+.dark a.active > svg {
+  color: white;
+}
 .header {
   position: fixed;
   width: calc(100vw - 4rem);
